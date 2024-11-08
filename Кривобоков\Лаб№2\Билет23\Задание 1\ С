@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <math.h>
+typedef struct {
+    double x;
+    double y;
+} Point;
+
+// Функция для вычисления квадрата расстояния между двумя точками
+double distance_squared(Point a, Point b) {
+    return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
+}
+
+// Функция для проверки, образуют ли три точки прямоугольный треугольник
+int is_right_triangle(Point a, Point b, Point c) {
+    double ab = distance_squared(a, b);
+    double ac = distance_squared(a, c);
+    double bc = distance_squared(b, c);
+
+    // Проверяем условие Пифагора
+    return (ab + ac == bc || ab + bc == ac || ac + bc == ab);
+}
+
+int main() {
+    Point A, B, C;
+    printf("Введите координаты точки A(х1, у1): ");
+    scanf("%lf %lf", &A.x, &A.y);
+    printf("Введите координаты точки B(х2, у2): ");
+    scanf("%lf %lf", &B.x, &B.y);
+    printf("Введите координаты точки C(х3, у3): ");
+    scanf("%lf %lf", &C.x, &C.y);
+    
+      if (is_right_triangle(A, B, C)) {
+        printf("Точки A, B и C образуют прямоугольный треугольник.");
+    } else {
+        printf("Точки A, B и C не образуют прямоугольный треугольник.");
+    }
+
+    return 0;
+}
