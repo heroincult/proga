@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+    double a, b, angle, height;
+    // ввод данных
+    printf("Введите длину первой стороны основания (а): ");
+    scanf("%lf", &a);
+    printf("Введите длину второй стороны основания (b): ");
+    scanf("%lf", &b);
+    printf("Введите значения угла между сторонами основания(angle): ");
+    scanf("%lf", &angle);
+    printf("Введите значения высоты параллелепипеда(height): ");
+    scanf("%lf", &height);
+    
+    //Преобразование угла в радианы
+    double angle_rad = angle * (M_PI / 180.0);
+    //вычисление площади основания
+    double area = a * b * sin(angle_rad);
+    //вычисление объема параллелепипеда
+    double volume = area * height;
+    //вывод результата
+    printf("Объем параллелепипеда равен: %.2lf", volume);
+    
+    return 0;
+}
+
+
+
