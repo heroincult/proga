@@ -1,0 +1,111 @@
+// lab 1, ticket 26; N1
+#include <stdio.h>
+#include <math.h>
+int main() {
+    double a, b, angle, height;
+    // ввод данных
+    printf("Введите длину первой стороны основания (а): ");
+    scanf("%lf", &a);
+    printf("Введите длину второй стороны основания (b): ");
+    scanf("%lf", &b);
+    printf("Введите значения угла между сторонами основания(angle): ");
+    scanf("%lf", &angle);
+    printf("Введите значения высоты параллелепипеда(height): ");
+    scanf("%lf", &height);
+    
+    //Преобразование угла в радианы
+    double angle_rad = angle * (M_PI / 180.0);
+    //вычисление площади основания
+    double area = a * b * sin(angle_rad);
+    //вычисление объема параллелепипеда
+    double volume = area * height;
+    //вывод результата
+    printf("Объем параллелепипеда равен: %.2lf", volume);
+    
+    return 0;
+}
+
+// lab 1, ticket 26; N2
+#include <stdio.h>
+#include <math.h>
+int main() {
+    double a, b, h;
+    
+    printf("Введите длину первого основания (а): ");
+    scanf("%lf", &a);
+    printf("Введите длину второго основания (b): ");
+    scanf("%lf", &b);
+    printf("Введите высоту трапеции(h): ");
+    scanf("%lf", &h);
+    
+    double d = fabs(a - b) / 2;
+    double c = sqrt(h * h + d * d);
+    double perimeter = a + b + 2 * c;
+    double mid_segment = (a + b) / 2;
+    
+    printf("Периметр трапеции: %.2lf", perimeter);
+    
+    printf("Длина отрезка, соединяющего середину ее оснований: %.2lf", mid_segment);
+    return 0;
+}
+
+// lab 2, ticket 23; N1
+#include <stdio.h>
+#include <math.h>
+typedef struct {
+    double x;
+    double y;
+} Point;
+
+// Функция для вычисления квадрата расстояния между двумя точками
+double distance_squared(Point a, Point b) {
+    return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
+}
+
+// Функция для проверки, образуют ли три точки прямоугольный треугольник
+int is_right_triangle(Point a, Point b, Point c) {
+    double ab = distance_squared(a, b);
+    double ac = distance_squared(a, c);
+    double bc = distance_squared(b, c);
+
+    // Проверяем условие Пифагора
+    return (ab + ac == bc || ab + bc == ac || ac + bc == ab);
+}
+
+int main() {
+    Point A, B, C;
+    printf("Введите координаты точки A(х1, у1): ");
+    scanf("%lf %lf", &A.x, &A.y);
+    printf("Введите координаты точки B(х2, у2): ");
+    scanf("%lf %lf", &B.x, &B.y);
+    printf("Введите координаты точки C(х3, у3): ");
+    scanf("%lf %lf", &C.x, &C.y);
+    
+      if (is_right_triangle(A, B, C)) {
+        printf("Точки A, B и C образуют прямоугольный треугольник.");
+    } else {
+        printf("Точки A, B и C не образуют прямоугольный треугольник.");
+    }
+
+    return 0;
+}
+
+// lab 2, ticket 22; N2 
+#include <iostream>
+
+int main() {
+    double A, B, C;
+
+    // Ввод коэффициентов A, B и C
+    std::cout << "Введите коэффициенты A, B и C: ";
+    std::cin >> A >> B >> C;
+
+    // Проверка, проходит ли прямая через начало координат
+    if (C == 0) {
+        std::cout << "Прямая проходит через начало координат." << std::endl;
+    } else {
+        std::cout << "Прямая не проходит через начало координат." << std::endl;
+    }
+
+    return 0;
+}
