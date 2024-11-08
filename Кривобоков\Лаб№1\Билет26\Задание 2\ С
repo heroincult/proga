@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+    double a, b, h;
+    
+    printf("Введите длину первого основания (а): ");
+    scanf("%lf", &a);
+    printf("Введите длину второго основания (b): ");
+    scanf("%lf", &b);
+    printf("Введите высоту трапеции(h): ");
+    scanf("%lf", &h);
+    
+    double d = fabs(a - b) / 2;
+    double c = sqrt(h * h + d * d);
+    double perimeter = a + b + 2 * c;
+    double mid_segment = (a + b) / 2;
+    
+    printf("Периметр трапеции: %.2lf", perimeter);
+    
+    printf("Длина отрезка, соединяющего середину ее оснований: %.2lf", mid_segment);
+    return 0;
+}
